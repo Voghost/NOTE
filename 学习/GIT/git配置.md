@@ -14,3 +14,5 @@
 * git config --global --unset https.https://github.com.proxy
 
 
+# git 工具推荐
+1. tig 命令行交互式工具
