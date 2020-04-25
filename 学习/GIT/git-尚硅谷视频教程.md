@@ -78,7 +78,7 @@
 		* 仅在当前本地库范围内有效
 		* **保存**在　当前目录的 ./.git/config
 	2. **系统**用户级别:
-		* `git config --golbal userName` 
+		* `git config --golbal user.name userName` 
 		* `git config --golbal user.email emailName@email.com`　
 		* 登陆当前操作系统的用户范围
 		* 保存在　~/.gitconfig
