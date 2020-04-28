@@ -155,8 +155,81 @@ Sdept  NVARCHAR(20)
 ### 修改表结构(ALTER TABLE)
 
 
-
-
-
 ## 3.4.2 用SSMS工具实现
+
+
+# 3.5 SQL 查询语句
+## 3.5.1SQL 基本基础
+### 1. SQL 语句的4部分组成
+* 数据定义语言DDL(Data Definition Language)
+	* 创建对象: CREATE
+	* 删除对象: DROP
+	* 修改对象: ALTER
+
+* 数据操纵语言DML(Data Manipuplation Language)
+	* 数据查询: SELECT
+	* 数据插入: INSERT
+	* 数据修改: UPDATE
+	* 数据删除: DELETE
+
+* 数据控制语言DLC(Data Control Language)
+	* 权限授予
+	* 权限收回
+
+* 其他
+	* 嵌入式SQL语言 和 动态SQL语言
+	* 数据库的重新组织、备份、恢复
+
+## 3.5.2 单表查询
+### 1. 投影运算
+* `SELECT` : 对应**投影运算**, 查询结果所需要的**属性**或**表达式**
+* `FROM `  : 对应**笛卡尔积**, 给出查询所涉及的**表** 或 **视图**
+* `WHERE`  : 对应**算则运算**, 指定查询结构元组所需要满足的选择条件
+* 注:
+	* **SELECT**和**FROM**是必须的,其他是可选的
+	* 可用<u>**DISTINCT**</u>消除重复元组
+
+* 基本语法:
+```sql
+SELECT A1 AS a,A2 AS b,A3 AS c
+FROM R1,R2,R3
+WHERE P
+-- 首先对R1,R2,R3 执行笛卡尔积
+-- 然后在笛卡尔积中选择谓词P为真的记录
+-- 最后在A1,A2,A3 的属性列中进行投影运算
+-- AS 给他们取别名
+```
+
+* 例子:  查询所有班级的班级编号,班级名称和所属学院
+```sql
+SELECT classNo,className,institute
+FROM Class
+-- 从Class表中依次取出每个元组
+-- 对每个元组仅选取classNo、className和institute三个属性的值，形成一个新元组
+-- 最后将这些新元组组织为一个结果关系输出
+```
+
+### 2. 选择运算
+* WHERE 字句可实现关系代数中的选择运算
+* WHRER 中常用的查询条件
+	* 比较查询: `>,>=,<,<=,=,<>(或!=)`
+	* 范围查询: `[NOT] BETWEEN <value1> AND <value2>` 
+	* 集合查询: `[not] IN <集合>`
+	* 空值查询: `IS [NOT] NULL`
+	* 字符匹配查询: `[NOT] LIKE <匹配字符串> `
+	* 逻辑查询: `AND,OR,NOT`
+* 例子
+	* 在学生Student表中查询年龄大于或等于19岁的同学学号、姓名和出生日期,年龄。
+
+```sql
+SELECT studentNO,studentName,birthday year(getdate())-year(birthday) AS age
+FROM Student
+WHERE sage>=19
+```
+### 3. 排序运算
+
+### 4. 查询表
+
+### 5. 聚合运算
+
 
