@@ -12,23 +12,23 @@
 ### 1.2 内部样式表 (学习时多用)
 ```html
 <html>
-	<head>
-	<title>titleName</title>
+<head>
+<title>titleName</title>
 
 <!--将所有p标签中元素改变-->
-	<style>
-	p{
-		color:yellow;
-		font-size:30px;
+<style>
+p{
+color:yellow;
+font-size:30px;
 
-	}
-	</style>
-	</head>
+}
+</style>
+</head>
 
-	<body>
-		<p>something01</p>
-		<p>something01</p>
-	</body>
+<body>
+<p>something01</p>
+<p>something01</p>
+</body>
 <html>
 ```
 * 将样式写入head中的style标签中
@@ -38,16 +38,16 @@
 ### 1.3  外部样式 (开发推荐使用)
 
 * 新建一个 cssName.css文件
-```css
+	```css
 	p{
-		color:yellow;
-		font-size:30px;
+	color:yellow;
+	font-size:30px;
 
 	}
-```
+	```
 * 在html文件中
-```html
-<html>
+	```html
+	<html>
 	<head>
 	<title>titleName</title>
 	<!--通过link创建与css的联系-->
@@ -55,11 +55,11 @@
 	</head>
 
 	<body>
-		<p>something01</p>
-		<p>something01</p>
+	<p>something01</p>
+	<p>something01</p>
 	</body>
-<html>
-```
+	<html>
+	```
 
 * 通过link可以应用外部css资源
 * html文档通过link连接后都能实现css的延时
@@ -77,8 +77,8 @@
 ### 2.2 选择器
 ```css
 p{
-	color:blue;
-	font-size:20px;
+color:blue;
+font-size:20px;
 }
 ```
 * 如上面的例子：
@@ -87,7 +87,7 @@ p{
 #### 2.2.1 元素选择器
 ```css
 p{
-	color=red;
+color=red;
 }
 ```
 * 作用：根据标签名来选中制定元素
@@ -97,7 +97,7 @@ p{
 #### 2.2.2 id选择器
 ```css
 #idName{
-	color : red;
+color : red;
 }
 ```
 * 作用: 根据元素的id属性值选中一个元素
@@ -108,14 +108,14 @@ p{
 
 ```css
 .className{
-	color: bule;
+color: bule;
 }
 ```
 * 作用： 根据元素的class属性值选中一个元素
 * 语法 .class属性值{}
 * 一个标签有多个class可用空格隔开 如：`<h1 class="className1 className2"></h1>`
 
-#### 2.2.3 通配选择器 * 
+#### 2.2.3 通配选择器 *
 * 选择所有元素
 
 ### 2.3. 复合选择器
@@ -129,11 +129,118 @@ div.red{
 * 语法：选择器1选择器2选择器3
 * 注意: 交集选择器中如果有元素选择器，必须元素选择器在前面
 
-#### 2.3.1 选择器分组(并集选择器)
+#### 2.3.2 分组选择器(并集选择器)
 ```css
 h1,span{
-	color:green;
+color:green;
 }
 ```
 * 同时选择多个元素的选择器
 * 语法： 选择器1，选择器2，选择器3
+
+
+#### 2.3.3 关系兄弟选择器(关系选择器)
+```html
+<div>
+我是一个div
+<p>
+我是div中的p元素
+<span>
+我是div中的p元素中的sapn元素
+</span>
+</p>
+<span>我是div元素中的span元素</span>
+</div>
+```
+##### 1.元素关系
+* 父元素：
+	* 直接包含子元素的元素叫做<u>父元素</u>
+* 子元素：
+	* 直接被父元素包含的元素是<u>子元素</u>
+* 祖先元素：
+	* 直接或间接包含后代元素叫做祖先元素
+	* 一个元素的父元素也是它的祖先元素
+* 后代元素：
+	* 直接或间接被祖先元素包含的元素
+	* 子元素也是后代元素
+* 兄弟元素:
+	* 用后相同父元素的元素是兄弟元素
+
+	##### 2.子元素选择器
+
+	```css
+	/*父元素 >  子元素*/
+	div > span{
+	color : red;
+	}
+	div > p > span{
+	color : blue;
+	}
+	```
+
+##### 3. 后代元素选择器
+```css
+/*元素1 元素2*/
+div span{
+font-size : 20px;
+}
+```
+* 元素1 的后代  元素2
+
+##### 4. 兄弟元素选择器
+```css
+/*1 选择下一个紧挨着兄弟兄弟元素
+/*元素1 + 元素2*/
+div + span{
+
+}
+
+/*2.选择下面所有兄弟*/
+/*元素1 ～ 元素2*/
+div ~ p{
+
+}
+```
+* " <b>+</b> " 元素1 的 下一个 兄弟元素 元素2(紧挨着，中间不能有元素)
+* " <b>~</b> " 元素1 的 下面所有 兄弟元素 元素2
+
+#### 2.3.4 属性选择器
+1. [属性名]   选择含有指定属性的元素
+2. [属性名=属性值]   选择含有指定属性和属性值的元素
+3. [属性名^=属性值] 选择属性值为指定属性值开头的元素
+4. [属性名\$=属性值] 选择属性值为指定属性值结尾的元素
+4. [属性名\*=属性值] 选择属性值含有指定值的元素
+```css
+[title]="abcd"{
+
+}
+
+[title]^="aaaa"{
+
+}
+```
+
+
+#### 2.3.4 伪类选择器
+* 伪类选择器 不存在的类  表示特殊状态
+	* 第一个子元素、被点击的元素、鼠标移入的元素
+	* 伪类一般情况下使用 ： 开头
+	* 常用的:
+		* :first-child 第一个所有元素,  :first-of-type 第一个同类型元素
+		* :last-child  最后的元素,   :last-of-type 最有的同类型元素
+		* :nth-child(x) 选择第x个元素  :nth-of-type(x) 在同类型中选择第x个元素
+			* x=n 全选    x取值为 (0,+∞))
+			* x=2n偶数x=2n+1 或 x=odd 表示奇数
+		* 否定:not()否定类
+			```css
+			/*把第三个去除*/
+			ul > li:not(:nth-child(3)){
+
+			}
+			```
+
+
+```css
+ul > li:first-child{
+}
+```
