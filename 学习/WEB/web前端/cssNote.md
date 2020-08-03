@@ -342,6 +342,13 @@ p::first-child{
 		* 高度: height
 		* 背景颜色: background-color
 	* 内边距(padding)
+		* 边距取值:
+			* padding-top
+			* padding-right
+			* padding-bottom
+			* padding-left
+		* 也可简写 padding: 上 右 下 左
+		* 内边距的大小会影响盒子大小,背景颜色会延伸到边框
 	* 边框(border)
 		* 边框的宽度: border-width
 			* 四个值(border-width: 10px 20px 30px 40px): 上 右 下 左
@@ -364,3 +371,77 @@ p::first-child{
 		* 通过简写来设置:
 			* border: solid 10px orange;
 	* 外边距(margin)
+		* 外边距不影响盒子可见大小，但是会影响和其他元素的距离()
+		* 四个方向的外边距
+			* margin-top
+			* margin-right
+			* margin=bottom
+			* margin-left
+		* 也可简写 margin: 上 右 下 左
+		* 两个相邻的垂直方向的外边距会有重叠的现象,不同值取大的
+		* 两个父子元素的外边距是指同一个值,改变子元素同时也会改变父元素元素
+
+* 盒子水平布局
+	* 子元素元素水平方向布局(下面七个值的总和应该为父元素的内容区长度)
+		1. margin-left
+		2. border-left
+		3. padding-left
+		4. width
+		5. padding-right
+		6. border-right
+		7. margin-right
+	* 上述七个值的和必须为父元素的内容区的长度,如果没有制定，自动调整值,(存在auto，自动调整auto的值,width默认为atuo)
+* 盒子垂直方向布局
+	* 父元素会被子元素撑开
+	* 子元素大小超过父元素，会从父元素溢出
+		* 可使用overflow 选项处理溢出 取值
+			* hidden 不溢出
+			* visible 允许溢出
+			* scroll 滚动条查看全部内容
+			* auto 自动生成滚动条
+		* overflow-x 单独处理水平
+		* overflow-y 单独处理垂直方向
+* 行内元素盒子模型
+	* 不能设置宽高
+	* 设置除宽高其他内容不会影响**垂直方向**的布局
+	* display 选项
+		* inline 行内元素
+		* block 块元素
+		* inline-block 行内块元素 既可以设置宽度和导读又不会独占一行
+		* table 将元素设置成一个表格
+		* none 元素不显示 不占地方 区别visibility: hidden
+	* visibility 占地方
+
+* 不设置css样式，浏览器会设置默认样式，要注意 如body标签的padding 有默认值8
+```css
+		 .box1 {
+            width: 100px;
+            height: 100px;
+            border: 2px black solid;
+        }
+
+        p {
+            margin: 0  /*去除外J边距*/
+        }
+
+        body {
+            margin: 0px; /*去除外边距*/
+        }
+
+        ul {
+            margin: 0;
+            padding: 0; /*去除内边距*/
+            list-style: none; /*去除点*/
+
+        }
+```
+
+* 通常情况下 使用
+```css
+*{
+	margin:0;
+	padding:0;
+}
+```
+
+* 也可以使用  **重置样式表** 来重置样式
