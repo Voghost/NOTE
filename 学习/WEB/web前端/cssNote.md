@@ -355,7 +355,7 @@ p::first-child{
 			* 三个值: 上 左右 下
 			* 二个值: 上下、左右
 			* 也可单独指定:
-				* border-top-width,border-right-width,border-bottom-width,border-letf-width
+				* border-top-width,border-right-width,border-bottom-width,border-left-width
 		* 边框的颜色: border-color
 			* 四个值: 上 右 下 左
 			* 三个值: 上 左右 下
@@ -380,6 +380,16 @@ p::first-child{
 		* 也可简写 margin: 上 右 下 左
 		* 两个相邻的垂直方向的外边距会有重叠的现象,不同值取大的
 		* 两个父子元素的外边距是指同一个值,改变子元素同时也会改变父元素元素
+	* 轮廓(outline) 效果和用法与边框(border)相似不同点是border会改变元素大小,outline不会改变元素大小
+	* 阴影(box-show)
+		* 第一个值: 水平偏移
+		* 第二个值: 垂直偏移
+		* 第三个值: 阴影的模糊半径
+		* 第四个值: rgba(red,green,blue,alpha)
+	* 圆角(border-radius)
+		* border-top-left-radius border-top-right-radius  border-bottom-left-radius  border-bottom-right-radius
+			* 取值两个或一个　1.两个不同值代表椭圆两个半径　2. 一个值代表圆半径 单位px
+		* border-radius: 左上　右上　　右下　左下 (未设定的值取对角)
 
 * 盒子水平布局
 	* 子元素元素水平方向布局(下面七个值的总和应该为父元素的内容区长度)
@@ -390,7 +400,7 @@ p::first-child{
 		5. padding-right
 		6. border-right
 		7. margin-right
-	* 上述七个值的和必须为父元素的内容区的长度,如果没有制定，自动调整值,(存在auto，自动调整auto的值,width默认为atuo)
+	* 上述七个值的和必须为父元素的内容区的长度,如果没有制定，自动调整值,(存在auto，自动调整auto的值,width默认为auto)
 * 盒子垂直方向布局
 	* 父元素会被子元素撑开
 	* 子元素大小超过父元素，会从父元素溢出
@@ -445,3 +455,25 @@ p::first-child{
 ```
 
 * 也可以使用  **重置样式表** 来重置样式
+
+* box-sizing=content-box 表示: width、height 为 内容区的大小
+* box-sizing=border-box 表示: width、height 为 内容区 +　内边距 + 边框 大小
+
+
+
+### 3.3 浮动
+#### 3.3.1 浮动简介
+* 可以通过浮动控制盒子模型向左侧或右侧移动
+* float 的取值
+	1. none 不浮动
+	2. left 向左浮动
+	3. right 向右浮动
+#### 3.3.2 浮动特点
+1. 设置浮动后,水平布局的等式不需要成立
+2. 设置浮动后,不再占用文档流中的内容,设置浮动后文档流向上移动
+3. 都设置浮动后,元素会向父元素的左侧或右侧移动
+4. 浮动元素不会移动到父元素的边界外
+5. 浮动元素不会覆盖 **上面** 的 **非** 浮动元素
+6. 浮动元素不会超过它前面的元素的(前后、高度)
+
+
