@@ -491,4 +491,50 @@ p::first-child{
 	3. 将元素的overflow设置为一个非visible的值
 		* overflow: auto;
 		* overflow: hidden; (更习惯用)
+* clear
+	* 清除浮动元素对当前元素的影响
+```css
+.box1{
+...
+...
+float: left;
+}
 
+.box2{
+...
+...
+clear: left;
+/*清除box1的浮动对当前box2的影响*/
+}
+```
+	* 原理：自动设置上边距(与上面元素的height相关)
+	* 取值:
+		1. left 根据左侧float
+		2. right 根据右侧float
+		3. both 清除两侧中较大的
+* **最完美的解决方法** 用after伪元素
+	* .box1:after{}
+```html
+<style>
+/*最最后的元素后面加一个非浮动的块元素,并且使用clear属性*/
+.box1::after{
+	content:'';
+	display:block;
+	clear:both;
+}
+</style>
+
+
+<div class="box1" >
+	<div class="box2"></div>
+</div>
+```
+
+* 扩展：解决外边距重叠
+	* 解决父元素和子元素的外边距重叠问题
+```css
+.box1::after{
+content:'';
+display: table;
+}
+```
